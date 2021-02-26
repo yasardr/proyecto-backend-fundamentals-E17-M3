@@ -7,8 +7,8 @@ Crear un proyecto llamado MediManage que será una API que ofrezca la posibilida
 Desarrollar un API en NodeJS que brinde la posibilidad de consultar, crear, modificar y eliminar medicamentos e información de los proveedores.
 
 ## ¿Quienes impactan o son impactados por el proyecto?
-Usuario
-Administrador del sistema
+- Usuario
+- Administrador del sistema
 
 ## ¿Cómo impactan en el sistema?
 Administrador
