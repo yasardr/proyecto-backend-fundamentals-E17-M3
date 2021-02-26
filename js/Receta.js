@@ -1,8 +1,8 @@
 /** Clase que representa la solicitud de medicamentos al administrador*/
 class Receta{
-	constructor(id,idMedicamento,cantidad,idUsuario,fecha,){
+	constructor(id,idProducto,cantidad,idUsuario,fecha,){
 		this.id = id;
-		this.idMedicamento = idMedicamento;
+		this.idProducto = idProducto;
 		this.cantidad = cantidad;
 		this.idUsuario = idUsuario;
 		this.fecha = fecha;
