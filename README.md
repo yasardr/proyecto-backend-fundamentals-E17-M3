@@ -1,12 +1,12 @@
 # proyecto-backend-fundamentals-E17-M3
 
 ## Temática del proyecto
-Crear un proyecto llamado MediManage que será una API que ofrezca la posibilidad de realizar un inventario de medicamentos para su administración, así como para la consulta de los mismos.
+Crear un proyecto llamado MediManage que será una API que ofrezca la posibilidad de realizar un inventario de medicamentos para su administración, así como para la consulta de estos.
 
 ## Objetivo
 Desarrollar un API en NodeJS que brinde la posibilidad de consultar, crear, modificar y eliminar medicamentos e información de los proveedores.
 
-## ¿Quienes impactan o son impactados por el proyecto?
+## ¿Quiénes impactan o son impactados por el proyecto?
 - Usuario
 - Administrador del sistema
 
@@ -35,7 +35,7 @@ Eliminando cantidades de medicamentos vendidos
 - Quiero editar la información del medicamento para tener mi inventario actualizado y corregir errores.
 ### Como terapeuta:
 - Quiero crear recetas en las cuales incluya medicamentos del inventario.
-- Quiero que se actualice la cantidad de medicamentos disponibles después de venderlos..
+- Quiero que se actualice la cantidad de medicamentos disponibles después de venderlos.
 - Quiero ver los medicamentos disponibles para saber si existe la medicina que necesita mi paciente.
 ### Como usuario:
 - Quiero visualizar los precios y disponibilidad de los medicamentos para su compra.
