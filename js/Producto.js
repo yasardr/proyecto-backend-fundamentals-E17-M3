@@ -1,6 +1,6 @@
 /** Clase que representa los medicamentos en el inventario */
 class Producto{
-	constructor(id, nombreComercial,nombreGenerico, presentacion, categoria, precioCompra, precioVenta, cantidad, observacion){
+	constructor(id, nombreComercial, nombreGenerico, presentacion, categoria, precioCompra, precioVenta, cantidad, observacion){
 		this.id= id; // identificador del medicamento.
 		this.nombreComercial = nombreComercial; // 
 		this.nombreGenerico = nombreGenerico; // 
@@ -12,8 +12,20 @@ class Producto{
 		this.observacion = observacion; //
 	}
 	
-	guardar(){
+	guardarProducto(){
 		// función para guardar un nuevo registro.
 	}
 	
+	modificarProducto(){
+        // función para modificar un registro existente.
+    }
+
+    eliminarProducto(){
+        // función para eliminar un producto existente.
+    }
+
+    visualizarProductos(){
+        // función para obtener los productos registrados.
+	}
+
 }
