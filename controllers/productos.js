@@ -3,11 +3,11 @@
  // en un futuro aquí se utilizarán los modelos
  //
 
-// importamos el modelo de usuarios
+// importamos el modelo de Producto
 const Producto = require('../models/Producto')
 
 function crearProducto(req, res) {
-  // Instanciaremos una nueva mascota utilizando la clase mascota
+  // Instanciaremos un nuevo Producto utilizando la clase Producto
   var producto = new Producto(req.body)
   res.status(201).send(producto)
 }
