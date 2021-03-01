@@ -11,7 +11,7 @@ Desarrollar un API en NodeJS que brinde la posibilidad de consultar, crear, modi
 - Administrador del sistema
 
 ## ¿Cómo impactan en el sistema?
-Administrador
+Administrador:
 Creando registros de medicamentos nuevos.
 Visualizando los medicamentos nuevos y existentes.
 Modificando la cantidad de medicamentos existentes.
@@ -21,7 +21,7 @@ Modificando proveedores existentes.
 Visualizando a todos los proveedores.
 Eliminar proveedores.
 
-Usuarios
+Usuarios:
 Visualizando la disponibilidad de medicamentos.
 Eliminando cantidades de medicamentos vendidos
 
