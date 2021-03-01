@@ -4,7 +4,7 @@
  //
 
 // importamos el modelo de solicitud
-const Producto = require('../models/Solicitud')
+const Solicitud = require('../models/Solicitud')
 
 function crearSolicitud(req, res) {
   // Instanciaremos una nueva solicitud utilizando la clase solicitud
@@ -15,7 +15,7 @@ function crearSolicitud(req, res) {
 function obtenerSolicitudes(req, res) {
   // Simulando dos solicitudes y respondiendolos
   var solicitud1 = new Solicitud(15, 2156, 1,456589,'02/02/2021')
-  var solicitud2 = new Ssolicitud(14, 2156, 3,456879,'02/02/2021')
+  var solicitud2 = new Solicitud(14, 2156, 3,456879,'02/02/2021')
   res.send([solicitud1, solicitud2])
 }
 
