@@ -93,10 +93,9 @@ Eliminando cantidades de medicamentos vendidos
 
       /** Clase que representa la solicitud de medicamentos al administrador*/
       class Solicitud {
-        constructor(id,idProducto,cantidad,idUsuario,fecha,){
+        constructor(id,productos,idUsuario,fecha,){
           this.id = id;
-          this.idProducto = idProducto;
-          this.cantidad = cantidad;
+          this.productos = productos;
           this.idUsuario = idUsuario;
           this.fecha = fecha;
         }
