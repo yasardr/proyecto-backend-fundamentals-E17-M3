@@ -27,7 +27,7 @@ CREATE TABLE usuario(
      email VARCHAR(50) NOT NULL,
      password VARCHAR(30) NOT NULL,
      telefono VARCHAR(10),
-     tipo VARCHAR(20) NOT NULL,
+     tipo VARCHAR(20) NOT NULL
 );
 
 
