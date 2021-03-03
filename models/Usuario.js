@@ -1,12 +1,12 @@
 class Usuario {
-    constructor(id,username,name,lastname,email,password,phone,tipo){
+    constructor(id,username,nombre,apellido,email,password,telefono,tipo){
         this.id = id;
         this.username = username;
-        this.name = name;
-        this.lastname = lastname;
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.email = email;
         this.password = password;
-        this.phone = phone;
+        this.telefono = telefono;
         this.tipo = tipo; //Terapeuta | Usuario general | Administrador.
     }
 }
