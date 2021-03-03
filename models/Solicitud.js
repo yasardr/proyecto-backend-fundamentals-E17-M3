@@ -1,8 +1,7 @@
 class Solicitud {
-    constructor(id,idProducto,cantidad,idUsuario,fecha,){
+    constructor(id,productos,idUsuario,fecha,){
         this.id = id;
-        this.idProducto = idProducto;
-        this.cantidad = cantidad;
+        this.productos = productos;
         this.idUsuario = idUsuario;
         this.fecha = fecha;
     }
