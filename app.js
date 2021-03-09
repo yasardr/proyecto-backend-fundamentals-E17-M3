@@ -11,6 +11,21 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+/*********************** Mongoose Configuration *******************************/
+const mongoose = require("mongoose");
+
+mongoose.connect(
+    "mongodb+srv://aaronBedu:clusterBedu24@cluster0.yfntn.mongodb.net/MediManage?retryWrites=true&w=majority"
+);
+
+mongoose.set("debug", true);
+
+require("./models/Usuario");
+require('./config/passport');
+// Aquí se importarán los modelos Producto y Solicitud cuando estén listos
+
+/*********************** Mongoose Configuration *******************************/
+
 // Agregamos el código de nuestro router (routes/index.js)
 app.use('/v1', require('./routes'));
 
