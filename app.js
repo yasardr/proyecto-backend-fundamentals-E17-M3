@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 const mongoose = require("mongoose");
 
 mongoose.connect(
-    "mongodb+srv://aaronBedu:clusterBedu24@cluster0.yfntn.mongodb.net/MediManage?retryWrites=true&w=majority"
+    "mongodb+srv://<user>:<password>@cluster0.yfntn.mongodb.net/<database>?retryWrites=true&w=majority"
 );
 
 mongoose.set("debug", true);
