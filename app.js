@@ -25,6 +25,7 @@ mongoose.set("debug", true);
 
 require("./models/Usuario");
 require('./config/passport');
+require("./models/Producto")
 // Aquí se importarán los modelos Producto y Solicitud cuando estén listos
 
 /*********************** Mongoose Configuration *******************************/
