@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 const mongoose = require("mongoose");
 
 mongoose.connect(
-    "mongodb+srv://<usuario>:<contraseñaa>@cluster0.yfntn.mongodb.net/test?retryWrites=true&w=majority"
+    "mongodb+srv://<user>:<password>@cluster0.yfntn.mongodb.net/<database>?retryWrites=true&w=majority"
 );
 
 mongoose.set("debug", true);
@@ -23,6 +23,7 @@ mongoose.set("debug", true);
 require("./models/Usuario");
 require('./config/passport');
 require("./models/Producto")
+require("./models/Solicitud")
 // Aquí se importarán los modelos Producto y Solicitud cuando estén listos
 
 /*********************** Mongoose Configuration *******************************/
