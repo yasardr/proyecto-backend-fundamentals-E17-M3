@@ -1,14 +1,3 @@
-/*class Solicitud {
-  constructor(id,productos,idUsuario,fecha,){
-      this.id = id;
-      this.productos = productos;
-      this.idUsuario = idUsuario;
-      this.fecha = fecha;
-  }
-}
-
-module.exports = Solicitud;*/
-
 //Solicitud.js
 const mongoose = require('mongoose');
 
@@ -16,8 +5,7 @@ var SolicitudSchema = new mongoose.Schema(
   {
     usuario:{ 
       type: mongoose.Schema.ObjectId, 
-      ref: "Usuario",
-      
+      ref: "Usuario"
     },
     productos: {
       type: Array,
@@ -26,9 +14,7 @@ var SolicitudSchema = new mongoose.Schema(
       ref: "Producto",
     }
   },
-
   {collection: "solicitud",timestamps: true }
-  
 );
 
 SolicitudSchema.methods.publicData = function(){
