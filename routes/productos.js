@@ -4,7 +4,7 @@ const {
   obtenerProductos,
   modificarProducto,
   eliminarProducto
-} = require('../controllers/Productos')
+} = require('../controllers/productos')
 const auth = require('./auth');
 
 router.get('/', auth.requerido, obtenerProductos)
