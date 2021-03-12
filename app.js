@@ -14,8 +14,11 @@ app.use(bodyParser.json());
 /*********************** Mongoose Configuration *******************************/
 const mongoose = require("mongoose");
 
+var isProduction = process.env.NODE_ENV === 'production';
+
 mongoose.connect(
-    "mongodb+srv://aaronBedu:clusterBedu24@cluster0.yfntn.mongodb.net/MediManage?retryWrites=true&w=majority"
+  process.env.MONGODB_URI, // obtiene la url de conexión desde las variables de entorno
+  { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
 );
 
 mongoose.set("debug", true);
