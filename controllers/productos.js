@@ -15,24 +15,20 @@ function crearProducto(req, res, next) {
 }
 
 function obtenerProductos(req, res, next) {
-  let limit = parseInt(req.query.limit) || 0;
-  //Obteniendo Productos desde MongoDB.
-  Producto.find((err, products) => {
-    if (!products || err) {
-      return res.sendStatus(401);
-    }
-    return res.json(products);
-  }).limit(limit).catch(next);
-}
 
-function obtenerProducto(req, res, next) {
-  //Obteniendo Producto desde MongoDB.
-  Producto.findOne(req.params.id, (err, product) => {
-    if (!product || err) {
-      return res.sendStatus(401);
-    }
-    return res.json(product);
-  }).catch(next);
+  let limit = parseInt(req.query.limit) || 0;
+  
+  if (!req.params.id) {
+    // sin :id, se enlista todas las solicitudes que realiza el usuario.
+    Producto.find().limit(limit).then(products => {
+      res.send(products)
+    }).catch(next)
+  } else {
+    // encontrar solicitud con :id 
+    Producto.findById({_id:req.params.id}).then(product => {
+      res.send(product)
+    }).catch(next)
+  }
 }
 
 function modificarProducto(req, res, next) {
@@ -262,7 +258,7 @@ function eliminarProducto(req, res) {
 module.exports = {
   crearProducto,
   obtenerProductos,
-  obtenerProducto,
+  // obtenerProducto,
   modificarProducto,
   modificarNombreComercial,
   modificarNombreGenerico,

@@ -2,7 +2,6 @@ const router = require('express').Router();
 const {
   crearProducto,
   obtenerProductos,
-  obtenerProducto,
   modificarProducto,
   modificarNombreComercial,
   modificarNombreGenerico,
@@ -18,7 +17,7 @@ const {
 const auth = require('./auth');
 
 router.get('/', auth.requerido, obtenerProductos);
-router.get('/:id', auth.requerido, obtenerProducto);
+router.get('/:id', auth.requerido, obtenerProductos);
 router.post('/', auth.requerido, crearProducto);
 router.put('/:id', auth.requerido, modificarProducto);
 router.put('/nombrecomercial/:id', auth.requerido, modificarNombreComercial);
