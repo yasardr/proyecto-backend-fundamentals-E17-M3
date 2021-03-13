@@ -19,7 +19,7 @@ const auth = require('./auth');
 
 router.get('/', auth.requerido, obtenerProductos);
 router.get('/:id', auth.requerido, obtenerProducto);
-router.post('/', crearProducto);
+router.post('/', auth.requerido, crearProducto);
 router.put('/:id', auth.requerido, modificarProducto);
 router.put('/nombrecomercial/:id', auth.requerido, modificarNombreComercial);
 router.put('/nombregenerico/:id', auth.requerido, modificarNombreGenerico);

@@ -15,22 +15,34 @@ function crearProducto(req, res, next) {
 }
 
 function obtenerProductos(req, res, next) {
+
+  let limit = parseInt(req.query.limit) || 0;
   //Obteniendo Productos desde MongoDB.
-  Producto.find((err, products) => {
-    if (!products || err) {
-      return res.sendStatus(401);
-    }
-    return res.json(products);
-  }).catch(next);
+  // Producto.find((err, products) => {
+  //   if (!products || err) {
+  //     return res.sendStatus(401);
+  //   }
+  //   return res.json(products);
+  // }).catch(next);
+  
+  if (!req.params.id) {
+    // sin :id, se enlista todos los productos que indica el usuario.
+    Producto.find().limit(limit).then((err, products) => {
+      if (!products || err) {
+        return res.sendStatus(401);
+      }
+      return res.send(products);
+    }).catch(next);
+  }
 }
 
 function obtenerProducto(req, res, next) {
   //Obteniendo Producto desde MongoDB.
-  Producto.findById(req.params.id, (err, product) => {
+  Producto.findOne(req.params.id, (err, product) => {
     if (!product || err) {
       return res.sendStatus(401);
     }
-    return res.json(product.publicData());
+    return res.json(product);
   }).catch(next);
 }
 
