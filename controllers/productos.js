@@ -27,11 +27,11 @@ function obtenerProductos(req, res, next) {
 
 function obtenerProducto(req, res, next) {
   //Obteniendo Producto desde MongoDB.
-  Producto.findById(req.params.id, (err, product) => {
+  Producto.findOne(req.params.id, (err, product) => {
     if (!product || err) {
       return res.sendStatus(401);
     }
-    return res.json(product.publicData());
+    return res.json(product);
   }).catch(next);
 }
 
