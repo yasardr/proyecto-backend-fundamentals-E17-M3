@@ -15,13 +15,14 @@ function crearProducto(req, res, next) {
 }
 
 function obtenerProductos(req, res, next) {
+  let limit = parseInt(req.query.limit) || 0;
   //Obteniendo Productos desde MongoDB.
   Producto.find((err, products) => {
     if (!products || err) {
       return res.sendStatus(401);
     }
     return res.json(products);
-  }).catch(next);
+  }).limit(limit).catch(next);
 }
 
 function obtenerProducto(req, res, next) {
