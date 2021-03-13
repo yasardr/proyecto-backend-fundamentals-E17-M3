@@ -10,12 +10,12 @@ const ProductoSchema = new mongoose.Schema({
     },                                           
     nombreGenerico: { type: String, lowercase: true },
     presentacion: { type: String, required: true },
-    unidadMedida: { type: String, enum: ['ml', 'L', 'Kg', 'mg'], required: true },
-    categoria: { type: String, enum: ['goteros', 'suspension', 'tabletas', 'ampolletas'], required: true },
-    precioCompra: { type: String, required: true },
-    precioVenta: { type: String, required: true },
-    cantidad: { type: String, required: true },
-    observacion: { type: String }
+    unidadMedida: { type: String, enum: ['ml', 'L', 'Kg', 'mg', 'g', 'tabletas', 'capsulas', 'perlas', 'otro'], required: true },
+    categoria: { type: String, enum: ['goteros', 'suspension', 'tabletas', 'ampolletas', 'capsulas', 'tonicos', 'tes', 'jarabes', 'pomadas', 'cremas', 'sprays', 'fibras', 'perlas', 'gel', 'otro'], required: true },
+    precioCompra: { type: Number, required: true },
+    precioVenta: { type: Number, required: true },
+    cantidad: { type: Number, required: true },
+    observacion: { type: String, lowercase: true  }
 },
 { timestamps: true });
 
