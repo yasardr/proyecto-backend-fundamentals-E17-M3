@@ -14,9 +14,21 @@ function crearProducto(req, res, next) {
     .catch(next);
 }
 
+function obtenerCampos(req, res, next) {
+  const campos = req.params.campo.split('&');
+  const obj = campos.reduce(function(result, item, index, array) {
+    result[item] = 1; //a, b, c
+    return result;
+  }, {});
+
+  Producto.find({},obj).then(product => {
+      res.send(product)
+    }).catch(next)
+}
+
 function obtenerCoincidenciaDeAtributos(req, res, next){
   // Extraemos el string del path para filtrar con esa informacion
-  var filter = req.path.substring(1);
+  var filter = req.params.filtro;
 
   // se indica el filtro que tendra el metodo find con la variable filter,
   // el numero 1 indica que se va a mostrar el resultado, a diferencia del 0 que no lo muestra.
@@ -66,12 +78,15 @@ function obtenerCoincidenciaDeAtributos(req, res, next){
         res.send(products)
       }).catch(next)
       break;
+    default:
+      return res.sendStatus(404);
   }
 }
 
 function obtenerProductos(req, res, next) {
 
   let limit = parseInt(req.query.limit) || 0;
+  console.log(req.params.id);
   
   if (!req.params.id && !req.params.nombreGenerico) {
     // sin :id, se enlista todas las solicitudes que realiza el usuario.
@@ -81,6 +96,10 @@ function obtenerProductos(req, res, next) {
   } else {
     // encontrar solicitud con :id 
     Producto.findById({_id:req.params.id}).then(product => {
+      console.log(product);
+      if (!product) {
+        return res.sendStatus(404);
+      }
       res.send(product)
     }).catch(next)
   }
@@ -314,6 +333,7 @@ module.exports = {
   crearProducto,
   obtenerCoincidenciaDeAtributos,
   obtenerProductos,
+  obtenerCampos,
   modificarProducto,
   modificarNombreComercial,
   modificarNombreGenerico,
