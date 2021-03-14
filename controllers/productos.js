@@ -14,53 +14,55 @@ function crearProducto(req, res, next) {
     .catch(next);
 }
 
-function obtenerFiltro(req, res, next){
+function obtenerCoincidenciaDeAtributos(req, res, next){
   // Extraemos el string del path para filtrar con esa informacion
   var filter = req.path.substring(1);
 
+  // se indica el filtro que tendra el metodo find con la variable filter,
+  // el numero 1 indica que se va a mostrar el resultado, a diferencia del 0 que no lo muestra.
   switch (filter){
     case "nombreComercial":
-      Producto.find({}, {"nombreComercial":1, "_id":0}).then(products => {
+      Producto.find({}, {"nombreComercial":1}).then(products => {
         res.send(products)
       }).catch(next)
       break;
     case "nombreGenerico":
-      Producto.find({}, {"nombreGenerico":1, "_id":0}).then(products => {
+      Producto.find({}, {"nombreGenerico":1}).then(products => {
         res.send(products)
       }).catch(next)
       break;
     case "presentacion":
-      Producto.find({}, {"presentacion":1, "_id":0}).then(products => {
+      Producto.find({}, {"presentacion":1}).then(products => {
         res.send(products)
       }).catch(next)
       break;
     case "unidadMedida":
-      Producto.find({}, {"unidadMedida":1, "_id":0}).then(products => {
+      Producto.find({}, {"unidadMedida":1}).then(products => {
         res.send(products)
       }).catch(next)
       break;
     case "categoria":
-      Producto.find({}, {"categoria":1, "_id":0}).then(products => {
+      Producto.find({}, {"categoria":1}).then(products => {
         res.send(products)
       }).catch(next)
       break;
     case "precioCompra":
-      Producto.find({}, {"precioCompra":1, "_id":0}).then(products => {
+      Producto.find({}, {"precioCompra":1}).then(products => {
         res.send(products)
       }).catch(next)
       break;
     case "precioVenta":
-      Producto.find({}, {"precioVenta":1, "_id":0}).then(products => {
+      Producto.find({}, {"precioVenta":1}).then(products => {
         res.send(products)
       }).catch(next)
       break;
     case "cantidad":
-      Producto.find({}, {"cantidad":1, "_id":0}).then(products => {
+      Producto.find({}, {"cantidad":1}).then(products => {
         res.send(products)
       }).catch(next)
       break;
     case "observacion":
-      Producto.find({}, {"observacion":1, "_id":0}).then(products => {
+      Producto.find({}, {"observacion":1}).then(products => {
         res.send(products)
       }).catch(next)
       break;
@@ -310,7 +312,7 @@ function eliminarProducto(req, res) {
 
 module.exports = {
   crearProducto,
-  obtenerFiltro,
+  obtenerCoincidenciaDeAtributos,
   obtenerProductos,
   modificarProducto,
   modificarNombreComercial,
