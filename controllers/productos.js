@@ -14,11 +14,64 @@ function crearProducto(req, res, next) {
     .catch(next);
 }
 
+function obtenerFiltro(req, res, next){
+  // Extraemos el string del path para filtrar con esa informacion
+  var filter = req.path.substring(1);
+
+  switch (filter){
+    case "nombreComercial":
+      Producto.find({}, {"nombreComercial":1, "_id":0}).then(products => {
+        res.send(products)
+      }).catch(next)
+      break;
+    case "nombreGenerico":
+      Producto.find({}, {"nombreGenerico":1, "_id":0}).then(products => {
+        res.send(products)
+      }).catch(next)
+      break;
+    case "presentacion":
+      Producto.find({}, {"presentacion":1, "_id":0}).then(products => {
+        res.send(products)
+      }).catch(next)
+      break;
+    case "unidadMedida":
+      Producto.find({}, {"unidadMedida":1, "_id":0}).then(products => {
+        res.send(products)
+      }).catch(next)
+      break;
+    case "categoria":
+      Producto.find({}, {"categoria":1, "_id":0}).then(products => {
+        res.send(products)
+      }).catch(next)
+      break;
+    case "precioCompra":
+      Producto.find({}, {"precioCompra":1, "_id":0}).then(products => {
+        res.send(products)
+      }).catch(next)
+      break;
+    case "precioVenta":
+      Producto.find({}, {"precioVenta":1, "_id":0}).then(products => {
+        res.send(products)
+      }).catch(next)
+      break;
+    case "cantidad":
+      Producto.find({}, {"cantidad":1, "_id":0}).then(products => {
+        res.send(products)
+      }).catch(next)
+      break;
+    case "observacion":
+      Producto.find({}, {"observacion":1, "_id":0}).then(products => {
+        res.send(products)
+      }).catch(next)
+      break;
+  }
+}
+
 function obtenerProductos(req, res, next) {
 
   let limit = parseInt(req.query.limit) || 0;
   
-  if (!req.params.id) {
+  if (!req.params.id && !req.params.nombreGenerico) {
     // sin :id, se enlista todas las solicitudes que realiza el usuario.
     Producto.find().limit(limit).then(products => {
       res.send(products)
@@ -257,8 +310,8 @@ function eliminarProducto(req, res) {
 
 module.exports = {
   crearProducto,
+  obtenerFiltro,
   obtenerProductos,
-  // obtenerProducto,
   modificarProducto,
   modificarNombreComercial,
   modificarNombreGenerico,
