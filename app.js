@@ -14,14 +14,20 @@ app.use(bodyParser.json());
 /*********************** Mongoose Configuration *******************************/
 const mongoose = require("mongoose");
 
+
+var isProduction = process.env.NODE_ENV === 'production';
+
 mongoose.connect(
-    "mongodb+srv://<user>:<password>@cluster0.yfntn.mongodb.net/<database>?retryWrites=true&w=majority"
+   process.env.MONGODB_URI, // obtiene la url de conexión desde las variables de entorno
+   { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
 );
 
 mongoose.set("debug", true);
 
 require("./models/Usuario");
 require('./config/passport');
+require("./models/Producto")
+require("./models/Solicitud")
 // Aquí se importarán los modelos Producto y Solicitud cuando estén listos
 
 /*********************** Mongoose Configuration *******************************/
