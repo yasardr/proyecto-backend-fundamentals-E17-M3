@@ -16,7 +16,8 @@ function crearProducto(req, res, next) {
 
 function obtenerCoincidenciaDeAtributos(req, res, next){
   // Extraemos el string del path para filtrar con esa informacion
-  var filter = req.path.substring(1);
+  var filter = req.path.substring(8);
+  console.log(filter);
 
   // se indica el filtro que tendra el metodo find con la variable filter,
   // el numero 1 indica que se va a mostrar el resultado, a diferencia del 0 que no lo muestra.

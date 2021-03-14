@@ -17,17 +17,16 @@ function crearUsuario(req, res, next) {
 }
 
 function obtenerUsuarios(req, res, next) {                              //Obteniendo usuario desde MongoDB.
-  Usuario.findById(req.usuario.id, (err, user) => {
+  Usuario.find(req.params.id, (err, user) => {
     if (!user || err) {
       return res.sendStatus(401)
     }
-    return res.json(user.publicData());
+    return res.json(user);
   }).catch(next);
 }
 
 function modificarUsuario(req, res, next) {
-  console.log(req.usuario)
-  Usuario.findById(req.usuario.id).then(user => {
+  Usuario.findById(req.params.id).then(user => {
     if (!user) { return res.sendStatus(401); }
     let nuevaInfo = req.body
     if (typeof nuevaInfo.username !== 'undefined')
@@ -44,7 +43,7 @@ function modificarUsuario(req, res, next) {
 
 function eliminarUsuario(req, res) {
   // únicamente borra a su propio usuario obteniendo el id del token
-  Usuario.findOneAndDelete({ _id: req.usuario.id }).then(r => {         //Buscando y eliminando usuario en MongoDB.
+  Usuario.findOneAndDelete({ _id: req.params.id }).then(r => {         //Buscando y eliminando usuario en MongoDB.
     res.status(200).send(`Usuario ${req.params.id} eliminado: ${r}`);
   })
 }

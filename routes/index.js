@@ -7,6 +7,7 @@ router.get('/', (req, res)=>{
 router.use('/usuarios', require('./usuarios'));
 router.use('/solicitudes', require('./solicitudes'));
 router.use('/productos', require('./productos'));
+router.use('/api-docs', require('./api-docs'));
 
 /* con el método use de nuestro router estamos indicando 
 * que en la ruta 'v1/usuarios' estarán anidadas las rutas 
