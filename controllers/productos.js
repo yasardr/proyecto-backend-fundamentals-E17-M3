@@ -14,11 +14,81 @@ function crearProducto(req, res, next) {
     .catch(next);
 }
 
+function obtenerCampos(req, res, next) {
+  const campos = req.params.campo.split('&');
+  const obj = campos.reduce(function(result, item, index, array) {
+    result[item] = 1; //a, b, c
+    return result;
+  }, {});
+
+  Producto.find({},obj).then(product => {
+      res.send(product)
+    }).catch(next)
+}
+
+function obtenerCoincidenciaDeAtributos(req, res, next){
+  // Extraemos el string del path para filtrar con esa informacion
+  var filter = req.params.filtro;
+
+  // se indica el filtro que tendra el metodo find con la variable filter,
+  // el numero 1 indica que se va a mostrar el resultado, a diferencia del 0 que no lo muestra.
+  switch (filter){
+    case "nombreComercial":
+      Producto.find({}, {"nombreComercial":1}).then(products => {
+        res.send(products)
+      }).catch(next)
+      break;
+    case "nombreGenerico":
+      Producto.find({}, {"nombreGenerico":1}).then(products => {
+        res.send(products)
+      }).catch(next)
+      break;
+    case "presentacion":
+      Producto.find({}, {"presentacion":1}).then(products => {
+        res.send(products)
+      }).catch(next)
+      break;
+    case "unidadMedida":
+      Producto.find({}, {"unidadMedida":1}).then(products => {
+        res.send(products)
+      }).catch(next)
+      break;
+    case "categoria":
+      Producto.find({}, {"categoria":1}).then(products => {
+        res.send(products)
+      }).catch(next)
+      break;
+    case "precioCompra":
+      Producto.find({}, {"precioCompra":1}).then(products => {
+        res.send(products)
+      }).catch(next)
+      break;
+    case "precioVenta":
+      Producto.find({}, {"precioVenta":1}).then(products => {
+        res.send(products)
+      }).catch(next)
+      break;
+    case "cantidad":
+      Producto.find({}, {"cantidad":1}).then(products => {
+        res.send(products)
+      }).catch(next)
+      break;
+    case "observacion":
+      Producto.find({}, {"observacion":1}).then(products => {
+        res.send(products)
+      }).catch(next)
+      break;
+    default:
+      return res.sendStatus(404);
+  }
+}
+
 function obtenerProductos(req, res, next) {
 
   let limit = parseInt(req.query.limit) || 0;
+  console.log(req.params.id);
   
-  if (!req.params.id) {
+  if (!req.params.id && !req.params.nombreGenerico) {
     // sin :id, se enlista todas las solicitudes que realiza el usuario.
     Producto.find().limit(limit).then(products => {
       res.send(products)
@@ -26,6 +96,10 @@ function obtenerProductos(req, res, next) {
   } else {
     // encontrar solicitud con :id 
     Producto.findById({_id:req.params.id}).then(product => {
+      console.log(product);
+      if (!product) {
+        return res.sendStatus(404);
+      }
       res.send(product)
     }).catch(next)
   }
@@ -257,8 +331,9 @@ function eliminarProducto(req, res) {
 
 module.exports = {
   crearProducto,
+  obtenerCoincidenciaDeAtributos,
   obtenerProductos,
-  // obtenerProducto,
+  obtenerCampos,
   modificarProducto,
   modificarNombreComercial,
   modificarNombreGenerico,

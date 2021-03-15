@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const {
   crearProducto,
+  obtenerCoincidenciaDeAtributos,
   obtenerProductos,
+  obtenerCampos,
   modificarProducto,
   modificarNombreComercial,
   modificarNombreGenerico,
@@ -17,6 +19,8 @@ const {
 const auth = require('./auth');
 
 router.get('/', auth.requerido, obtenerProductos);
+router.get('/campos/:campo', auth.requerido, obtenerCampos);
+router.get('/filtro/:filtro', auth.requerido, obtenerCoincidenciaDeAtributos);
 router.get('/:id', auth.requerido, obtenerProductos);
 router.post('/', auth.requerido, crearProducto);
 router.put('/:id', auth.requerido, modificarProducto);
