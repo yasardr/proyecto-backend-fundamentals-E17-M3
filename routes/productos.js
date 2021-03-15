@@ -20,14 +20,23 @@ const auth = require('./auth');
 
 /**
  * @swagger
- * /v1/productos:
+ * /v1/productos/campos/{campo}:
  *  get:
  *    tags:
  *    - Products
- *    summary: Get all products
- *    description: Use to request all the products in the database
+ *    summary: Get products by 'campo'
+ *    description: Use this request to filter the results
  *    produces:
  *      - application/json
+ *    parameters:
+ *      - in: query
+ *        name: campo
+ *        description: Attribute to filter products
+ *        type: array
+ *        collectionFormat: csv
+ *        items: 
+ *          type: string
+ *        required: true
  *    responses:
  *      200:
  *        description: Obtains all the products

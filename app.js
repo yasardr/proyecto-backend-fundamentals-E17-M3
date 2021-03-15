@@ -12,17 +12,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 /*********************** Mongoose Configuration *******************************/
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
 
-var isProduction = process.env.NODE_ENV === 'production';
+// var isProduction = process.env.NODE_ENV === 'production';
 
-mongoose.connect(
-   process.env.MONGODB_URI, // obtiene la url de conexión desde las variables de entorno
-   { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
-);
+// mongoose.connect(
+//    process.env.MONGODB_URI, // obtiene la url de conexión desde las variables de entorno
+//    { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
+// );
 
-mongoose.set("debug", true);
+// mongoose.set("debug", true);
+
+
 
 require("./models/Usuario");
 require('./config/passport');
