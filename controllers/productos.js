@@ -15,7 +15,7 @@ function crearProducto(req, res, next) {
 }
 
 function obtenerCampos(req, res, next) {
-  const campos = req.params.campo.split('&');
+  const campos = req.params.campo.split(',');
   const obj = campos.reduce(function(result, item, index, array) {
     result[item] = 1; //a, b, c
     return result;

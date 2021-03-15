@@ -29,7 +29,7 @@ const auth = require('./auth');
  *    produces:
  *      - application/json
  *    parameters:
- *      - in: query
+ *      - in: path
  *        name: campo
  *        description: Attribute to filter products
  *        type: array
