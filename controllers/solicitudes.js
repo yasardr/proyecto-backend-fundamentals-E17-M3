@@ -1,41 +1,70 @@
-//  Archivo controllers/solicitudes.js
-//  Simulando la respuesta de objetos Solicitud
- // en un futuro aquí se utilizarán los modelos
- //
+//controller/solicitudes.js
+const mongoose = require("mongoose");
+const Solicitud = mongoose.model('Solicitud')
+const Producto = mongoose.model('Producto')
+mongoose.set('useFindAndModify', false);
 
-// importamos el modelo de solicitud
-const Solicitud = require('../models/Solicitud')
 
-function crearSolicitud(req, res) {
-  // Instanciaremos una nueva solicitud utilizando la clase solicitud
-  var solicitud = new Solicitud(req.body)
-  res.status(201).send(solicitud)
+function crearSolicitud(req, res, next) { 
+
+    const body = req.body;
+    
+    const solicitud = new Solicitud(body);
+    solicitud.save().then((request) => { //Guardar la solicitud en MongoDB.
+      res.status(201).send(request);
+    })
+    .catch(next);
 }
 
-function obtenerSolicitudes(req, res) {
-  // Simulando dos solicitudes y respondiendolos
-  var solicitud1 = new Solicitud(15, [2,3,4],456589,'02/02/2021')
-  var solicitud2 = new Solicitud(14, [5,6,7], 3,456879,'02/02/2021')
-  res.send([solicitud1, solicitud2])
+function obtenerSolicitud(req, res, next) {
+
+  let limit = parseInt(req.query.limit) || 0;
+  
+  if (!req.params.id) {
+    // sin :id, se enlista todas las solicitudes que realiza el usuario.
+    Solicitud.find().limit(limit).then(solicitudes => {
+      res.send(solicitudes)
+    }).catch(next)
+  } else {
+    // encontrar solicitud con :id 
+    Solicitud.findById({_id:req.params.id}).then(solicitud => {
+      res.send(solicitud)
+    }).catch(next)
+  }
 }
 
-function modificarSolicitud(req, res) {
-  // simulando una solicitud previamente existente que el administrador modifica
-  var solicitud1 = new Solicitud(req.params.id, [2,3,4],456589,'03/02/2021')
-  var modificaciones = req.body
-  solicitud1 = { ...solicitud1, ...modificaciones }
-  res.send(solicitud1)
+function modificarSolicitud(req, res, next) {
+
+  Solicitud.findById(req.params.id).then(solicitud => {
+
+    if (!solicitud) { return res.sendStatus(401); }
+
+      let nuevaInfo = req.body
+      if (typeof nuevaInfo.idUsuario !== 'undefined')
+        solicitud.idUsuario = nuevaInfo.idUsuario
+      if (typeof nuevaInfo.productos !== 'undefined')
+        solicitud.productos = nuevaInfo.productos
+      if (typeof nuevaInfo.fecha !== 'undefined')
+        solicitud.fecha = nuevaInfo.fecha
+      solicitud.save().then(updateSolicitud => {
+        res.status(201).json(updateSolicitud.publicData())
+      }).catch(next)
+  }).catch(next)
 }
 
 function eliminarSolicitud(req, res) {
-  // se simula una eliminación de una solicitud, regresando un 200
-  res.status(200).send(`Solicitud ${req.params.id} eliminada`);
+  Solicitud.findOneAndDelete({_id: req.params.id})
+  .then(res.status(200).json({ message: `Solicitud ${req.params.id} eliminado` }))
+  .catch(err => next(err));
 }
 
-// exportamos las funciones definidas
+
 module.exports = {
   crearSolicitud,
-  obtenerSolicitudes,
+  obtenerSolicitud,
   modificarSolicitud,
-  eliminarSolicitud
+  eliminarSolicitud,
+  obtenerSolicitud
 }
+
+
