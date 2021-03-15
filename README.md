@@ -4,26 +4,23 @@
 Crear un proyecto llamado MediManage que será una API que ofrezca la posibilidad de realizar un inventario de medicamentos para su administración, así como para la consulta de estos.
 
 ## Objetivo
-Desarrollar un API en NodeJS que brinde la posibilidad de consultar, crear, modificar y eliminar medicamentos e información de los proveedores.
+Desarrollar un API en NodeJS que brinde la posibilidad de consultar, crear, modificar y eliminar medicamentos.
 
 ## ¿Quiénes impactan o son impactados por el proyecto?
-- Usuario
+- Usuario General
+- Usuario Terapeuta
 - Administrador del sistema
 
 ## ¿Cómo impactan en el sistema?
 Administrador:
-Creando registros de medicamentos nuevos.
-Visualizando los medicamentos nuevos y existentes.
-Modificando la cantidad de medicamentos existentes.
-Eliminando medicamentos que ya no se utilizan o que ya no existen.
-Agregando nuevos proveedores para enlazar con los medicamentos.
-Modificando proveedores existentes.
-Visualizando a todos los proveedores.
-Eliminar proveedores.
+- Creando registros de medicamentos nuevos.
+- Visualizando los medicamentos nuevos y existentes.
+- Modificando la cantidad de medicamentos existentes.
+- Eliminando medicamentos que ya no se utilizan o que ya no existen.
 
 Usuarios:
-Visualizando la disponibilidad de medicamentos.
-Eliminando cantidades de medicamentos vendidos
+- Visualizando la disponibilidad de medicamentos.
+- Eliminando cantidades de medicamentos vendidos.
 
 
 ## Historias de usuario
@@ -39,65 +36,3 @@ Eliminando cantidades de medicamentos vendidos
 - Quiero ver los medicamentos disponibles para saber si existe la medicina que necesita mi paciente.
 ### Como usuario:
 - Quiero visualizar los precios y disponibilidad de los medicamentos para su compra.
-
-## Clases de JavaScript
-
-    /** Clase que representa los medicamentos en el inventario */
-    class Producto{
-      constructor(id, nombreComercial,nombreGenerico, presentacion, unidadMedida, categoria, precioCompra, precioVenta, cantidad, observacion){
-        this.id= id; // identificador del producto.
-        this.nombreComercial = nombreComercial;  
-        this.nombreGenerico = nombreGenerico; 
-        this.presentacion = presentacion;
-	this.unidadMedida = unidadMedida; //ml | L | Kg | mg
-        this.categoria= categoria; // goteros | suspensión | tabletas | ampolletas
-        this.precioCompra = precioCompra; // Precio de compra al proveedor
-        this.precioVenta = precioVenta; // Precio de venta al público en general
-        this.cantidad = cantidad; // Cantidad de productos existentes
-        this.observacion = observacion; // Anotaciones al respecto
-      }
-
-          guardarProducto(){
-            // función para guardar un nuevo registro.
-          }
-
-          modificarProducto(){
-            // función para modificar un registro existente.
-          }
-
-          eliminarProducto(){
-            // función para eliminar un producto existente.
-          }
-
-          visualizarProductos(){
-            // función para obtener los productos registrados.
-          }
-	
-       }
-
-
-
-      /** Clase que representa a un usuario en la app*/
-      class Usuario {
-        constructor(id,username,nombre,apellido,email,password,phone,tipo){
-          this.id = id;
-          this.username = username;
-          this.nombre = nombre;
-          this.apellido = apellido;
-          this.email = email;
-          this.password = password;
-          this.telefono = telefono;
-          this.tipo = tipo; //Terapeuta | Usuario general | Administrador.
-        }
-      }
-
-
-      /** Clase que representa la solicitud de medicamentos al administrador*/
-      class Solicitud {
-        constructor(id,productos,idUsuario,fecha,){
-          this.id = id;
-          this.productos = productos;
-          this.idUsuario = idUsuario;
-          this.fecha = fecha;
-        }
-      }
